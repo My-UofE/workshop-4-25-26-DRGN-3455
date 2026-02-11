@@ -43,5 +43,29 @@ public class Rectangle {
   public double getPerimeter() {
     return 2 * (this.width + this.height);
   }
+
+  // method: scale a rectangle: same across both dimensions
+  public void scale(double scaleFactor) {
+    this.height = this.height * scaleFactor;
+    this.width = this.width * scaleFactor;
+  }
   
+    // method: scale a rectangle, unique across each dimensions
+  public void scale(double scaleFactorX, double scaleFactorY) {
+    this.height = this.height * scaleFactorY;
+    this.width = this.width * scaleFactorX;
+  }
+
+  public boolean isOverlappedWith(Rectangle rect) {
+    boolean overlapping = false;
+    if (this.originX >= rect.originX && this.originX <= rect.originX + rect.width)
+       if (this.originY >= rect.originY && this.originY <= rect.originY + rect.height){
+          overlapping = true;}
+
+    if (this.originX <= rect.originX && this.originX >= rect.originX - rect.width)
+       if (this.originY <= rect.originY && this.originY >= rect.originY - rect.height){
+          overlapping = true;}
+
+    return overlapping;
+  }
 }
